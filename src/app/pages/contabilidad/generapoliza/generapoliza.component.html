@@ -1,0 +1,64 @@
+<body class="animated fadeIn">
+    <div class="row animated fadeIn">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive m-t-40">
+                        <div class="row">
+                            <div class="col-3" style="margin-bottom: 2rem;">
+                                <span style="font-weight:bold">Fecha a consultar *</span>
+                                <input id="fechaconsulta" name="fechaconsulta" class="form-control" type="date">
+                            </div>
+                            <div class="col-3">
+                                <button (click)="getrepor()" class="btn btn-outline-info mt-4"> CONSULTAR</button>
+                                <button (click)="exportexcel()" class="btn btn-outline-success mt-4 ml-4"><i class="mdi mdi-file-excel" style="font-size: large;"></i> XLSX</button>
+                            </div>
+                        </div>
+
+                        <table id="tablaFacturas">
+                            <p-table #dt [columns]="cols" [value]="cc" [paginator]="true" [rows]="10">
+                                <ng-template pTemplate="caption">
+                                    <div style="  text-align: right">
+                                        <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+                                        <input type="text" pInputText size="50" placeholder="Buscar..." (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header" let-columns>
+                                    <tr>
+                                        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                                            {{col.header}}
+                                            <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-cc let-rowData>
+                                    <tr>
+                                        <td>{{ cc.posicion }}</td>
+                                        <td>{{ cc.asignacion }}</td>
+                                        <td>{{ cc.clave_contabilizacion }}</td>
+                                        <td>{{ cc.cuenta_contable }}</td>
+                                        <td>{{ cc.denominacion }}</td>
+                                        <td>{{ cc.importe }}</td>
+                                        <td>{{ cc.importe_ml }}</td>
+                                        <td>{{ cc.moneda }}</td>
+                                        <td>{{ cc.indicador_impuestos }}</td>
+                                        <td>{{ cc.texto }}</td>
+                                        <td>{{ cc.centro_coste }}</td>
+                                        <td>{{ cc.elemento_pep }}</td>
+                                        <td>{{ cc.centro_beneficio }}</td>
+                                        <td>{{ cc.centro }}</td>
+                                        <td>{{ cc.uuid }}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+
+                        </table>
+                        <div class="row mt-3 mr-1" style="float: right;">
+                            <button (click)="confirmapoliza()" class="btn btn-outline-info mr-2"> CONFIRMAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

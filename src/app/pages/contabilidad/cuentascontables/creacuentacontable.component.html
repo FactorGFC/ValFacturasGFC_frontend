@@ -1,0 +1,81 @@
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+
+<div class="col-12 animated fadeIn">
+    <div class="card">
+        <div class="card-body animated fadeIn">
+            <form ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarOpcion()" class="form-horizontal form-material" action="index.html">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input formControlName="account" id="account" class="form-control" type="text" required placeholder="Cuenta">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <input formControlName="accounting_key" id="accounting_key" class="form-control" required type="text" placeholder="Clave contable">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <input formControlName="accounting_name" id="accounting_name" class="form-control" required type="text" placeholder="Nombre cuenta">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <input formControlName="accounting_type" id="accounting_type" class="form-control" type="text" placeholder="Tipo cuenta">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <input formControlName="assigment" id="assigment" class="form-control" type="text" placeholder="Asignacion">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <input formControlName="center" id="center" class="form-control" type="text" placeholder="Centro">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <input formControlName="cost_center" id="cost_center" class="form-control" type="text" placeholder="Centro de coste">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <input formControlName="definition" id="definition" class="form-control" type="text" placeholder="Definicion">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <input formControlName="pep_element" id="pep_element" class="form-control" type="text" placeholder="Elemento pep">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <input formControlName="profit_center" id="profit_center" class="form-control" type="text" placeholder="Centro de beneficio">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <input formControlName="tax_indicator" id="tax_indicator" class="form-control" type="text" placeholder="Tax">
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-outline-info btn-lg btn-block text-uppercase" type="submit">Guardar</button>
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-outline-info btn-lg btn-block text-uppercase" [routerLink]="['/contabilidad/cuentascontables']">Regresar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->

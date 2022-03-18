@@ -1,0 +1,105 @@
+<body class="animated fadeIn">
+    <div class="row animated fadeIn">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive m-t-40">
+                        <table id="tablaFacturas">
+                            <p-table #dt [columns]="cols" [value]="cc" [paginator]="true" [rows]="10" selectionMode="single" [(selection)]="seleccionpoliza">
+                                <ng-template pTemplate="caption">
+                                    <div style="  text-align: right">
+                                        <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+                                        <input type="text" pInputText size="50" placeholder="Buscar..." (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header" let-columns>
+                                    <tr>
+                                        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                                            {{col.header}}
+                                            <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                                            <input pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')" size="10">
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-cc let-rowData>
+                                    <tr [pSelectableRow]="rowData">
+                                        <td>{{ cc.id }}</td>
+                                        <td>{{ cc.ar_date }}</td>
+                                        <td>{{ cc.folio }}</td>
+                                        <td>{{ cc.total_credit }}</td>
+                                        <td>{{ cc.total_debit }}</td>
+                                        <td>{{ cc.balance }}</td>
+                                        <td>{{ cc.status }}</td>
+
+
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </table>
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <a style="cursor: pointer">
+                                    <button class="btn btn-outline-danger" (click)="cancelapoliza()"> CANCELAR POLIZA</button>
+                                </a>
+                                <a style="cursor: pointer">
+                                    <button class="btn btn-outline-info ml-3" (click)="consultaPolizaDetalle()"> CONSULTA POLIZA</button>
+                                </a>
+                                <a style="cursor: pointer">
+                                    <button (click)="exportexcelsinconsulta()" class="btn btn-outline-success ml-3"><i class="mdi mdi-file-excel" style="font-size: large;"></i> XLSX</button>
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <table id="tabladetalles" class="mt-5" *ngIf="muestradetalles">
+                            <p-table #dtu [columns]="colsdetalle" [value]="ccd" [paginator]="true" [rows]="10">
+                                <ng-template pTemplate="caption">
+                                    <div style="  text-align: right">
+                                        <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+                                        <input type="text" pInputText size="50" placeholder="Buscar..." (input)="dtu.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header" let-columns>
+                                    <tr>
+                                        <th *ngFor="let col of colsdetalle" [pSortableColumn]="col.field">
+                                            {{col.header}}
+                                            <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-ccd let-rowData>
+                                    <tr>
+                                        <td>{{ ccd.posicion }}</td>
+                                        <td>{{ ccd.asignacion }}</td>
+                                        <td>{{ ccd.clave_contabilizacion }}</td>
+                                        <td>{{ ccd.cuenta_contable }}</td>
+                                        <td>{{ ccd.denominacion }}</td>
+                                        <td>{{ ccd.importe }}</td>
+                                        <td>{{ ccd.importe_ml }}</td>
+                                        <td>{{ ccd.moneda }}</td>
+                                        <td>{{ ccd.indicador_impuestos }}</td>
+                                        <td>{{ ccd.texto }}</td>
+                                        <td>{{ ccd.centro_coste }}</td>
+                                        <td>{{ ccd.elemento_pep }}</td>
+                                        <td>{{ ccd.centro_beneficio }}</td>
+                                        <td>{{ ccd.centro }}</td>
+                                        <td>{{ ccd.uuid }}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </table>
+                        <div class="row mt-3 ml-2" *ngIf="muestradetalles">
+                            <a style="cursor: pointer">
+                                <button (click)="exportexcel()" class="btn btn-outline-success"><i class="mdi mdi-file-excel" style="font-size: large;"></i> XLSX</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

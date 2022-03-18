@@ -1,0 +1,81 @@
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+
+<div class="col-12 animated fadeIn">
+    <div class="card">
+        <div class="card-body animated fadeIn">
+            <form [formGroup]="forma" (ngSubmit)="actualizaCuentaContable()" class="form-horizontal form-material" id="loginform" action="index.html" *ngFor="let item of cuenta">
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <a style="font-weight: bold;">Cuenta</a> <input id="account" class="form-control" type="text" required [(ngModel)]="item.account" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <a style="font-weight: bold;">Clave contable</a> <input id="accounting_key" class="form-control" type="text" required [(ngModel)]="item.accounting_key" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <a style="font-weight: bold;">Nombre cuenta</a> <input id="accounting_name" class="form-control" type="text" required [(ngModel)]="item.accounting_name" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <a style="font-weight: bold;">Tipo cuenta</a> <input id="accounting_type" class="form-control" type="text" [(ngModel)]="item.accounting_type" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <a style="font-weight: bold;">Asignacion</a> <input id="assigment" class="form-control" type="text" [(ngModel)]="item.assigment" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <a style="font-weight: bold;">Centro</a> <input id="center" class="form-control" type="text" [(ngModel)]="item.center" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <a style="font-weight: bold;">Centro de coste</a> <input id="cost_center" class="form-control" type="text" [(ngModel)]="item.cost_center" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <a style="font-weight: bold;">Definicion</a> <input id="definition" class="form-control" type="text" [(ngModel)]="item.definition" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <a style="font-weight: bold;">Elemento pep</a> <input id="pep_element" class="form-control" type="text" [(ngModel)]="item.pep_element" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <a style="font-weight: bold;">Centro de beneficio</a> <input id="profit_center" class="form-control" type="text" [(ngModel)]="item.profit_center" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+                <div class="form-group m-t-20">
+                    <div class="col-xs-12">
+                        <a style="font-weight: bold;">Tax</a> <input id="tax_indicator" class="form-control" type="text" [(ngModel)]="item.tax_indicator" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-outline-info btn-lg btn-block text-uppercase" type="submit">Guardar</button>
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-outline-info btn-lg btn-block text-uppercase" [routerLink]="['/contabilidad/cuentascontables']">Regresar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->

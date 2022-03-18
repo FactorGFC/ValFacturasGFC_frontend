@@ -1,0 +1,64 @@
+<body class="animated fadeIn">
+    <div class="row animated fadeIn">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive m-t-40">
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <a style="cursor: pointer">
+                                    <button class="btn btn-outline-info" (click)="registrapago()"> REGISTRAR PAGO</button>
+                                </a>
+                                <a style="cursor: pointer">
+                                    <button (click)="exportexcel()" class="btn btn-outline-success ml-3"><i class="mdi mdi-file-excel" style="font-size: large;"></i> XLSX</button>
+                                </a>
+                            </div>
+                        </div>
+                        <table id="tablaFacturas">
+                            <p-table #dt [columns]="cols" [value]="cc" [paginator]="true" [rows]="10" selectionMode="multiple" [(selection)]="seleccionpoliza">
+                                <ng-template pTemplate="caption">
+                                    <div style="  text-align: right">
+                                        <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+                                        <input type="text" pInputText size="50" placeholder="Buscar..." (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header" let-columns>
+                                    <tr>
+                                        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                                            {{col.header}}
+                                            <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                                            <input pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')" size="7">
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-cc let-rowData>
+                                    <tr [pSelectableRow]="rowData">
+                                        <td>{{ cc.emisor }}</td>
+                                        <td>{{ cc.receptor }}</td>
+                                        <td>{{ cc.fecha_operacion }}</td>
+                                        <td>{{ cc.fecha_vencimiento }}</td>
+                                        <td>{{ cc.folio_factura }}</td>
+                                        <td>{{ cc.estatus }}</td>
+                                        <td>{{ cc.folio_solicitud }}</td>
+                                        <td>{{ cc.folio_solicitud_fondeo }}</td>
+                                        <td>{{ cc.pagar_a }}</td>
+                                        <td>{{ cc.monto_operado }}</td>
+                                        <td>{{ cc.total_factura }}</td>
+                                        <td>{{ cc.moneda }}</td>
+                                        <td>{{ cc.uuid_factura_descontada }}</td>
+                                        <td>{{ cc.reporte_de_cobranza }}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
